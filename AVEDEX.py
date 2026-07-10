@@ -1,73 +1,85 @@
-vimport unicodedata
-def normalizar_texto(texto):
-# Converte o valor recebido para texto.
-texto = str(texto)
-# Padroniza para minúsculas e remove espaços extras.
-texto = texto.lower().strip()
-# Separa letras e acentos.
-texto = unicodedata.normalize("NFD", texto)
-# Remove os acentos.
-texto = "".join(
-caractere for caractere in texto
-if unicodedata.category(caractere) != "Mn"
-)
-return texto
-def pausar():
-# Pausa a execução para o usuário conseguir ler a tela.
-input("\nPressione ENTER para voltar ao menu...")
-def exibir_menu():
-# Exibe as opções principais do sistema.
-print()
-print("=" * 50)
-print("AVEDEX - MENU PRINCIPAL")
-print("=" * 50)
-print("1 - Listar aves")
-print("2 - Buscar ave")
-print("3 - Ver detalhes de uma ave")
-print("4 - Comparar duas aves")
-print("5 - Sobre a AveDex")
-print("0 - Sair")
-def listar_aves(catalogo):
-# Mostra uma lista simples com ID e nome popular.
-print()
-print("=" * 50)
-print("AVES CADASTRADAS")
-print("=" * 50)
-for ave in catalogo:
-print(f"{ave['id']} - {ave['nome_popular']}")
-def buscar_ave_por_id(catalogo, id_procurado):
-# Percorre o catálogo procurando o ID informado.
-for ave in catalogo:
-if str(ave["id"]) == id_procurado:
-return ave
-# Retorna None quando não encontra.
-return None
-def valor_ou_indisponivel(valor, unidade=""):
-# Trata valor ausente.
-if valor is None or valor == "":
-return "Não informado"
-# Acrescenta unidade quando necessário.
-if unidade != "":
-return f"{valor} {unidade}"
-return str(valor)
-def exibir_detalhes_ave(ave):
-# Exibe detalhes de uma única ave.
-print()
-print("=" * 50)
-print("DETALHES DA AVE")
-print("=" * 50)
-print(f"ID: {ave['id']}")
-print(f"Nome popular: {ave['nome_popular']}")
-print(f"Nome científico: {ave['nome_cientifico']}")
-print(f"Ordem: {ave.get('ordem', 'Não informada')}")
-print(f"Família: {ave.get('familia', 'Não informada')}")
-print(f"Dieta: {ave.get('dieta_tipo', 'Não informada')}")
-print(f"Habitat: {ave['habitat']}")
-print(f"Comprimento: {valor_ou_indisponivel(ave.get('comprimento_cm'), 'cm')}")
-print(f"Peso: {valor_ou_indisponivel(ave.get('peso_g'), 'g')}")
-9
+import unicodedata
 
-print(f"Conservação: {ave.get('status_conservacao', 'Não informada')}")
+
+def normalizar_texto(texto):
+    # Converte o valor recebido para texto.
+    texto = str(texto)
+    # Padroniza para minúsculas e remove espaços extras.
+    texto = texto.lower().strip()
+    # Separa letras e acentos.
+    texto = unicodedata.normalize("NFD", texto)
+    # Remove os acentos.
+    texto = "".join(
+        caractere for caractere in texto
+        if unicodedata.category(caractere) != "Mn"
+    )
+    return texto
+
+
+def pausar():
+    # Pausa a execução para o usuário conseguir ler a tela.
+    input("\nPressione ENTER para voltar ao menu...")
+
+
+def exibir_menu():
+    # Exibe as opções principais do sistema.
+    print()
+    print("=" * 50)
+    print("AVEDEX - MENU PRINCIPAL")
+    print("=" * 50)
+    print("1 - Listar aves")
+    print("2 - Buscar ave")
+    print("3 - Ver detalhes de uma ave")
+    print("4 - Comparar duas aves")
+    print("5 - Sobre a AveDex")
+    print("0 - Sair")
+
+
+def listar_aves(catalogo):
+    # Mostra uma lista simples com ID e nome popular.
+    print()
+    print("=" * 50)
+    print("AVES CADASTRADAS")
+    print("=" * 50)
+    for ave in catalogo:
+        print(f"{ave['id']} - {ave['nome_popular']}")
+
+
+def buscar_ave_por_id(catalogo, id_procurado):
+    # Percorre o catálogo procurando o ID informado.
+    for ave in catalogo:
+        if str(ave["id"]) == id_procurado:
+            return ave
+    # Retorna None quando não encontra.
+    return None
+
+
+def valor_ou_indisponivel(valor, unidade=""):
+    # Trata valor ausente.
+    if valor is None or valor == "":
+        return "Não informado"
+    # Acrescenta unidade quando necessário.
+    if unidade != "":
+        return f"{valor} {unidade}"
+    return str(valor)
+
+
+def exibir_detalhes_ave(ave):
+    # Exibe detalhes de uma única ave.
+    print()
+    print("=" * 50)
+    print("DETALHES DA AVE")
+    print("=" * 50)
+    print(f"ID: {ave['id']}")
+    print(f"Nome popular: {ave['nome_popular']}")
+    print(f"Nome científico: {ave['nome_cientifico']}")
+    print(f"Ordem: {ave.get('ordem', 'Não informada')}")
+    print(f"Família: {ave.get('familia', 'Não informada')}")
+    print(f"Dieta: {ave.get('dieta_tipo', 'Não informada')}")
+    print(f"Habitat: {ave['habitat']}")
+    print(f"Comprimento: {valor_ou_indisponivel(ave.get('comprimento_cm'), 'cm')}")
+    print(f"Peso: {valor_ou_indisponivel(ave.get('peso_g'), 'g')}")
+    print(f"Conservação: {ave.get('status_conservacao', 'Não informada')}")
 print(f"Índice de conservação: {ave.get('indice_conservacao', 'Não informado')}")
 print(f"Alimentação: {ave['alimentacao']}")
 print(f"Curiosidade: {ave.get('curiosidade', 'Não informada')}")
