@@ -1,4 +1,39 @@
 import unicodedata
+LARGURA_TELA = 78
+
+# largura usada em titulos e linhas de separação
+OPCOES_MENU = {
+    "1- Listar aves",
+    "2- Buscar ave",
+    "3- Ver detalhes de uma ave",
+    "4- Comparar duas aves",
+    "5- Sobre a AveDex",
+    "0- Sair"
+}
+
+# Campos usados na busca textual.
+CAMPOS_BUSCA = [
+    "Nome_popular",
+    "Nome_cientifico",
+    "Familia",
+    "Ordem",
+    "dieta_tipo"
+]
+
+# Campos exibidos na comparação.
+#Cada item possui: Rotulo naa tela, chave do dicionário e unidade.
+CAMPOS_COMPARACAO = [
+    ("Nome popular", "nome_popular"),
+    ("Nome científico", "nome_cientifico"),
+    ("Ordem", "ordem"),
+    ("Família", "familia"),
+    ("Dieta", "dieta_tipo"),
+    ("Habitat", "habitat"),
+    ("Comprimento (cm)", "comprimento_cm"),
+    ("Peso (g)", "peso_g"),
+    ("Conservação", "status_conservacao"),
+    ("Índice de conservação", "indice_conservacao")
+]
 
 
 def normalizar_texto(texto):
