@@ -228,10 +228,7 @@ def preparar_valor_comparacao(ave, campo, unidade):
 
 def exibir_comparacao_aves(ave_1, ave_2):
     # Exibe duas aves lado a lado.
-    print()
-    print(linha("=", 78))
-    print("COMPARAÇÃO ENTRE AVES")
-    print(linha("=", 78))
+    titulo("COMPARAÇÂO ENTRE AVES")
     imprimir_linha_comparacao("Campo", ave_1["nome_popular"], ave_2["nome_popular"])
     print(linha("-", 78))
     for rotulo, campo, unidade in CAMPOS_COMPARACAO:
