@@ -36,6 +36,28 @@ CAMPOS_COMPARACAO = [
 ]
 
 
+#===============================
+# Funções auxiliares
+#===============================
+
+def linha(caractere="=", largura=LARGURA_TELA): 
+    # Retorna uma linha de saparação com o caractere "="
+    return caractere * largura
+
+def titulo(texto):
+    #exibe um titulo padronizado
+
+    print()
+    print(linha("="))
+    print(texto)
+    print(linha("="))
+
+def mensagem_aviso(texto):
+    #exibe uma mensagem de aviso simples
+    print (f"[AVISO] {texto}")
+
+
+
 def normalizar_texto(texto):
     # Converte o valor recebido para texto.
     texto = str(texto)
@@ -72,10 +94,7 @@ def exibir_menu():
 
 def listar_aves(catalogo):
     # Mostra uma lista simples com ID e nome popular.
-    print()
-    print("=" * 50)
-    print("AVES CADASTRADAS")
-    print("=" * 50)
+    titulo("AVES CADASTRADAS")
     for ave in catalogo:
         print(f"{ave['id']} - {ave['nome_popular']}")
 
@@ -101,10 +120,7 @@ def valor_ou_indisponivel(valor, unidade=""):
 
 def exibir_detalhes_ave(ave):
     # Exibe detalhes de uma única ave.
-    print()
-    print("=" * 50)
-    print("DETALHES DA AVE")
-    print("=" * 50)
+    titulo("DETALHES DA AVE")
     print(f"ID: {ave['id']}")
     print(f"Nome popular: {ave['nome_popular']}")
     print(f"Nome científico: {ave['nome_cientifico']}")
