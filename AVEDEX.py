@@ -205,7 +205,7 @@ def tela_busca(catalogo):
             ave_encontrada = buscar_ave_por_id(resultados, escolha)
             if ave_encontrada is None:
                 mensagem_aviso("ID não encontrado nos resultados.")
-            else:
+            else:            
                 exibir_detalhes_ave(ave_encontrada)
 
 # ======================================================================================

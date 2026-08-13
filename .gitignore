@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+cache_midias/
+.uv-cache/
+.uv-python/
